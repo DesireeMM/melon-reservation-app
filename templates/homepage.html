@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}Melon Reservation Homepage{% endblock %}
+{% block head %} {% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="homepage-row">
+        <div class="homepage-col">
+            <div id="login-field">
+                <form action="/login" method="POST">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control focus-ring" id="floatingInput" name="username" placeholder="Username">
+                        <label for="floatingInput">Username</label>
+                    </div>
+                    <div class="form-floating">
+                        <input type="password" class="form-control focus-ring" id="floatingPassword" name="password" placeholder="Password">
+                        <label for="floatingPassword">Password</label>
+                    </div>
+                    <br>
+                    <p>
+                        <button type="submit" class="btn">Login</button>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Melon Reservation Homepage{% endblock %}
+{% block head %} {% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="results-row">
+        <div class="results-col">
+            <h2>Available Times</h2>
+            {% for res in open_bookings %}
+            <p>{{res}}</p>
+            <button type="button" class="book-btn" id="{{res}}">Reserve</button>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<script src="/static/js/makeReservation.js"></script>
+{% endblock %}

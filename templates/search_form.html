@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %}Find A Reservation{% endblock %}
+{% block head %} {% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="search-row">
+        <div class="search-col">
+            <div id="search-field">
+                <form action="/booking" method="POST">
+                    <div class="form-floating mb-3">
+                        <input type="date" class="form-control focus-ring" id="floatingInput" name="date" placeholder="Date">
+                        <label for="floatingInput">Date</label>
+                    </div>
+                    <div class="form-floating">
+                        <input type="time" class="form-control focus-ring" id="floatingStartTime" name="start" placeholder="Start Time">
+                        <label for="floatingStartTime">Start Time (optional) </label>
+                    </div>
+                    <br>
+                    <div class="form-floating">
+                        <input type="time" class="form-control focus-ring" id="floatingEndTime" name="end" placeholder="End Time">
+                        <label for="floatingStartTime">End Time (optional) </label>
+                    </div>
+                    <br>
+                    <p>
+                        <button type="submit" class="btn">Search</button>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
