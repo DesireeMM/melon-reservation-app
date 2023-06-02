@@ -1,0 +1,17 @@
+.results-row {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(75px, 1fr));
+    grid-template-rows: repeat(auto, 50px);
+    align-items: center;
+    justify-content: space-between;
+}
+
+.results-col {
+    grid-auto-flow: column dense;
+    grid-row: auto;
+    padding: 10px;
+    position: relative;
+    border-color:black;
+    border-radius: 25px;
+}

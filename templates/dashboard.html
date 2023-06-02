@@ -7,8 +7,10 @@
     <div class="dash-row">
         <div class="dash-col">
             <h2>{{current_user.username}}'s Reservations</h2>
-            {% for res in reservations %}
-            <p>{{res.date}} at {{res.start}}</p>
+            {% for res in upcoming_res %}
+            <p>{{res[0]}} at {{res[1]}}</p>
+            <button type="button" class="btn btn-outline-info delete-btn" id={{res[2]}}>Cancel Reservation</button>
+            <br><br>
             {% endfor %}
         </div>
     </div>
@@ -16,4 +18,5 @@
         <a href="/search">Make Another Reservation</a>
     </div>
 </div>
+<script src="/static/js/deleteBooking.js"></script>
 {% endblock %}

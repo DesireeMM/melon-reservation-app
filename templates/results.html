@@ -4,15 +4,24 @@
 
 {% block body %}
 <div class="container-fluid">
+    <h2>Available Times on {{res_date}}</h2>
     <div class="results-row">
+        {% if formatted_bookings %}
+        {% for res in formatted_bookings %}
         <div class="results-col">
-            <h2>Available Times</h2>
-            {% for res in open_bookings %}
             <p>{{res}}</p>
-            <button type="button" class="book-btn" id="{{res}}">Reserve</button>
-            {% endfor %}
+            <input type="hidden" id="res-date" value={{res_date}}>
+            <button type="button" class="btn btn-outline-info book-btn" id="{{res}}">Reserve</button>
         </div>
-    </div>
+            {% endfor %}
+            {% else %}
+            <h3>Sorry, there are no available bookings that match your search criteria.</h3>
+            {% endif %}
+        </div>
+        <br><br>
+        <a class="btn btn-outline-info" href="/search">Search Again</a>
+        <br><br>
+        <a class="btn btn-outline-info" href="/dashboard">Dashboard</a>
 </div>
 <script src="/static/js/makeReservation.js"></script>
 {% endblock %}

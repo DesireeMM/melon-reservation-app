@@ -46,11 +46,20 @@ def view_dashboard():
     reservations = current_user.reservations
     current_datetime = datetime.today()
 
+    formatted_res = []
+    for res in reservations:
+        res_datetime = datetime.combine(res.date, res.start)
+        if res_datetime > current_datetime:
+            res_date = res.date.strftime('%B %d, %Y')
+            res_time = res.start.strftime('%-I:%M %p')
+            res_id = res.res_id
+            formatted_res.append((res_date, res_time, res_id))
+    
+    upcoming_res = sorted(formatted_res)
 
     return render_template("dashboard.html",
                             current_user=current_user,
-                            reservations=reservations,
-                            current_datetime=current_datetime)
+                            upcoming_res=upcoming_res)
 
 @app.route('/search')
 def view_search_form():
@@ -67,9 +76,15 @@ def display_booking_times():
     search_end = request.form.get("end")
 
     open_bookings = crud.display_available_reservations(search_date, search_start, search_end)
+    
+    formatted_bookings = []
+    for slot in open_bookings:
+        formatted_time = slot.strftime('%-I:%M %p')
+        formatted_bookings.append(formatted_time)
 
     return render_template("results.html",
-                            open_bookings=open_bookings)
+                            res_date=search_date,
+                            formatted_bookings=formatted_bookings)
 
 @app.route('/make-reservation', methods=["POST"])
 def handle_booking():
@@ -77,10 +92,11 @@ def handle_booking():
 
     current_user_id = session.get("user_id")
     current_user = crud.get_user_by_id(current_user_id)
-    desired_res = request.json.get("res_datetime")
+    desired_res = request.json.get("res_time")
+    desired_date = request.json.get("res_date")
 
-    res_date = datetime.strptime(desired_res, '%Y-%m-%d %H:%M:%S').date()
-    res_time = datetime.strptime(desired_res, '%Y-%m-%d %H:%M:%S').time()
+    res_date = datetime.strptime(desired_date, '%Y-%m-%d').date()
+    res_time = datetime.strptime(desired_res, '%I:%M %p').time()
 
     black_out_dates = []
     for res in current_user.reservations:
@@ -101,6 +117,21 @@ def handle_booking():
         "redirect": '/dashboard'
     })
 
+
+@app.route('/cancel-res', methods=['POST'])
+def cancel_reservation():
+    """Handle a user canceling a reservation"""
+
+    target_res_id = request.json.get("res_id")
+    target_res = crud.get_reservation_by_id(target_res_id)
+    res_date = target_res.date
+    db.session.delete(target_res)
+    db.session.commit()
+
+    return jsonify({
+        "status": f"You have cancelled your reservation on {res_date}.",
+        "redirect": '/dashboard'
+    })
 
 
 if __name__ == '__main__':

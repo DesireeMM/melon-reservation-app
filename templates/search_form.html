@@ -5,6 +5,7 @@
 {% block body %}
 <div class="container-fluid">
     <div class="search-row">
+        <h1>Search for Available Reservation Times</h1>
         <div class="search-col">
             <div id="search-field">
                 <form action="/booking" method="POST">
@@ -23,11 +24,12 @@
                     </div>
                     <br>
                     <p>
-                        <button type="submit" class="btn">Search</button>
+                        <button type="submit" class="btn btn-info">Search</button>
                     </p>
                 </form>
             </div>
         </div>
+        <a href="/dashboard">Go Back To Dashboard</a>
     </div>
 </div>
 {% endblock %}
