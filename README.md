@@ -53,11 +53,11 @@ I believe this project is a good candidate to use React. There are a lot of repe
 4. Once I had selected my database structure and framework, I created a database model in Python and corresponding CRUD functions in a separate file. I also knew I would need to create some test users in order to check the functionality of my web application, so I wrote a script to seed my database.
 5. Once I had these components, I thought about the logic behind my booking system. I knew I would need to account for reservations made by the user, since they couldn't have more than one reservation on the same day. I also knew that I would need to take reservations made by other users into account, as more than one user could not book the same time. I accomplished this by utilizing lists and loops to get the data I needed.
 6. After creating my routes in Python, I used HTML and Jinja2 to create the templates to be rendered.
-6. After successfully displaying potential bookings, I used an AJAX fetch request to handle making a reservation. To check that it was successfully updating the database, I asked the following:
+7. After successfully displaying potential bookings, I used an AJAX fetch request to handle making a reservation. To check that it was successfully updating the database, I asked the following:
 - Did the reservation show up on the user's dashboard?
 - Did that time slot disappear from the available bookings displayed for the same search date?
 - If a user attempted to make a reservation for that same day, would they be stopped?
-7. Though it wasn't required, I wanted to add the option to cancel a reservation if a user's plans changed. I used another AJAX fetch request to handle deleting a booking. To check that it was successfully updating the database, I asked the following:
+8. Though it wasn't required, I wanted to add the option to cancel a reservation if a user's plans changed. I used another AJAX fetch request to handle deleting a booking. To check that it was successfully updating the database, I asked the following:
 - Did the reservation disappear from the user's dashboard?
 - Did that time slot open back up?
-8. Lastly, I wanted to clean up the interface a bit, so I reworked some of my functions to included formatted dates and times. Additionally, I added some Bootstrap and CSS custom styling to improve the look of the site. As mentioned above, I would love to spend more time on the appearance to enhance the user experience.
+9. Lastly, I wanted to clean up the interface a bit, so I reworked some of my functions to included formatted dates and times. Additionally, I added some Bootstrap and CSS custom styling to improve the look of the site. As mentioned above, I would love to spend more time on the appearance to enhance the user experience.
