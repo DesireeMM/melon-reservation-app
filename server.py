@@ -37,6 +37,26 @@ def user_login():
     else:
         flash("Password incorrect. Please try again.")
         return redirect("/")
+    
+@app.route("/create-account", methods=["POST"])
+def create_new_account():
+    """Create a new user account"""
+    username = request.form.get("username")
+    user_password = request.form.get("password")
+    user_pw_confirm = request.form.get("confirm-pw")
+
+    if crud.get_user_by_username(username):
+        flash("Username already taken. Please try again.")
+    elif user_password != user_pw_confirm:
+        flash("Passwords don't match. Please try again.")
+    else:
+        hashed_pw = crud.hash_password(user_password)
+        new_user = crud.create_user(username, hashed_pw)
+        db.session.add(new_user)
+        db.session.commit()
+        flash("Account created successfully. Please log in.")
+
+    return redirect("/")
 
 @app.route('/dashboard')
 def view_dashboard():
@@ -133,6 +153,16 @@ def cancel_reservation():
         "redirect": '/dashboard'
     })
 
+@app.route("/logout")
+def user_logout():
+    """Log current user out."""
+
+    current_user_id = session.get("user_id")
+    current_user = crud.get_user_by_id(current_user_id)
+    session.clear()
+    flash(f"Logged out {current_user.username}")
+
+    return redirect("/")
 
 if __name__ == '__main__':
     connect_to_db(app)

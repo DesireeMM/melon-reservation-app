@@ -16,7 +16,7 @@ model.connect_to_db(server.app)
 model.db.create_all()
 
 #create some users
-for n in range(6):
+for n in range(1, 6):
     username = f'User{n}'
     password = crud.hash_password('test')
 

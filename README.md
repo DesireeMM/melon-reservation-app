@@ -1,7 +1,5 @@
 # Melon Reservation Scheduler
 
-You can find the deployed application on Render [here](https://melon-reservation-app-vchk.onrender.com)
-
 Learn more about the developer on [LinkedIn](https://www.linkedin.com/in/desiree-morimoto-9470481b0/)
 
 ## Table of Contents
@@ -18,7 +16,7 @@ This project is a simple service to help users schedule reservations for fancy m
 - Reservation time slots are only available on the hour or half hour
 - Reservations are exactly 30 minutes long
 - Time slots can only be booked by one user
-Users can sign in using their existing username and password.
+Users can sign in using their existing username and password or create a new account.
 
 #### <a name="technologiesused"></a>Technologies Used
 - Python
@@ -35,9 +33,6 @@ Users can sign in using their existing username and password.
 
 ## <a name="future"></a>Future Features
 This project had a quick turnaround time, but for future versions, I would include the following:
-
-###### Account Creation
-Right now, users must use login credentials that already exist in the database. I would like to allow users to create their own accounts.
 
 ###### fullcalendar.io API Integration
 Right now, users can only view their reservations as a list. I'd like to be able to integration with fullcalendar.io's JavaScript API to display both user's reservations and potential booking times on a calendar.
@@ -62,4 +57,6 @@ I believe this project is a good candidate to use React. There are a lot of repe
 8. Though it wasn't required, I wanted to add the option to cancel a reservation if a user's plans changed. I used another AJAX fetch request to handle deleting a booking. To check that it was successfully updating the database, I asked the following:
 - Did the reservation disappear from the user's dashboard?
 - Did that time slot open back up?
-9. Lastly, I wanted to clean up the interface a bit, so I reworked some of my functions to included formatted dates and times. Additionally, I added some Bootstrap and CSS custom styling to improve the look of the site. As mentioned above, I would love to spend more time on the appearance to enhance the user experience.
+9. I wanted to clean up the interface a bit, so I reworked some of my functions to included formatted dates and times. Additionally, I added some Bootstrap and CSS custom styling to improve the look of the site. As mentioned above, I would love to spend more time on the appearance to enhance the user experience.
+10. The final step would be deployment. I tried a new service called [Render](https://render.com/) for this project. Unfortunately, the database is not currently loading properly, but should be fixed soon. Thanks for your patience!  
+You can find the deployed application on Render [here](https://melon-reservation-app-vchk.onrender.com)

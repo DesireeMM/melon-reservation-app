@@ -2,6 +2,7 @@
 
 from flask_sqlalchemy import SQLAlchemy
 
+
 db = SQLAlchemy()
 
 # create User class
@@ -40,7 +41,7 @@ class Reservation(db.Model):
         return f"<Reservation res_id: {self.res_id} date: {self.date} time: {self.start}>"
 
 def connect_to_db(flask_app, db_uri="postgresql:///melon_res_db", echo=False):
-    """Function to connect to my project database"""
+    """Function to connect to melon reservation database"""
     flask_app.config["SQLALCHEMY_DATABASE_URI"]= db_uri
     flask_app.config["SQLALCHEMY_ECHO"] = echo
     flask_app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False

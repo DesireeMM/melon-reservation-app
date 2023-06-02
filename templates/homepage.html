@@ -15,6 +15,7 @@
         </div>
         <div class="homepage-col">
             <div id="login-field">
+                <h3>Existing Users</h3>
                 <form action="/login" method="POST">
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control focus-ring" id="floatingInput" name="username" placeholder="Username">
@@ -26,7 +27,29 @@
                     </div>
                     <br>
                     <p>
-                        <button type="submit" class="btn">Login</button>
+                        <button type="submit" class="btn btn-outline-info">Login</button>
+                    </p>
+                </form>
+            </div>
+            <div id="new-account-field">
+                <h3>New Users</h3>
+                <form action="/create-account" method="POST">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control focus-ring" id="floatingInput" name="username" placeholder="Username">
+                        <label for="floatingInput">Username</label>
+                    </div>
+                    <div class="form-floating">
+                        <input type="password" class="form-control focus-ring" id="floatingPassword" name="password" placeholder="Password">
+                        <label for="floatingPassword">Password</label>
+                    </div>
+                    <br>
+                    <div class="form-floating">
+                        <input type="password" class="form-control focus-ring" id="floatingPassword" name="confirm-pw" placeholder="Confirm Password">
+                        <label for="floatingConfirmPassword">Confirm Password</label>
+                    </div>
+                    <br>
+                    <p>
+                        <button type="submit" class="btn btn-outline-info">Create Account</button>
                     </p>
                 </form>
             </div>
